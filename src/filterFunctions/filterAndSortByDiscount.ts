@@ -8,6 +8,22 @@ import { Product } from "../types";
  * @param {Product[]} productList
  * @returns {Product[]} the list of filtered products
  */
+
+const calculateNetDiscount = (prod:Product) => prod.net_price * (100 - prod.discount.percentage) / 100
+
 export default function filterAndSortByDiscount(productList:Product[]):Product[]{
-    return productList
+    
+    let filteredProductList:Product[] = []
+
+    if(productList.length == 0) return filteredProductList
+
+    filteredProductList = productList.filter((prod:Product)=>{
+        return prod.discount.isEnabled
+    })
+
+    const sortedProductList:Product[] = filteredProductList.sort((first:Product,second:Product) => {
+        return calculateNetDiscount(first) - calculateNetDiscount(second)
+    })
+    
+    return sortedProductList
 }

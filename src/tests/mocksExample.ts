@@ -10,6 +10,11 @@ export const foodBrandPremium: Brand = {
   name: "Premium Foods",
 };
 
+export const bookBrand: Brand = {
+  id: "premium-books",
+  name: "Books Limited Edition",
+};
+
 export const muffin: Product = {
   id: "test-id",
   name: "Muffin",
@@ -44,4 +49,16 @@ export const chocolatePremium: Product = {
     percentage: 0,
   },
   type: ProductType.FOOD,
+};
+
+export const book: Product = {
+  id: "test-book",
+  name: "book",
+  brand: bookBrand,
+  net_price: 20,
+  discount: {
+    isEnabled: true,
+    percentage: 20,
+  },
+  type: ProductType.EDUCATION,
 };
